@@ -1,3 +1,227 @@
-.App {
+.app {
+	color: #353535;
+	font-size: 16px;
+	line-height: 1.6em;
+	background-color: #f9f9f9;
+}
+
+.app-container {
+	display: flex;
+}
+
+/* Aside */
+.app-aside {
+	color: #fff;
+	position: relative;
+	width: 100%;
+	min-height: 1px;
+	flex: 0 0 16.666667%;
+	max-width: 16.666667%;
 	text-align: center;
+	box-sizing: border-box;
+}
+
+.app-aside__container {
+	box-sizing: border-box;
+	min-height: 100vh;
+	height: 100%;
+	max-width: 600px;
+	width: 100%;
+	background-color: #2b2f3e;
+	padding: 10px;
+}
+
+/* Main */
+.app-main {
+	flex: 0 0 83.333333%;
+	max-width: 83.333333%;
+	padding: 0 15px;
+	box-sizing: border-box;
+}
+
+.app-main__container {
+	display: flex;
+	justify-content: center;
+	max-width: 1140px;
+	margin: 20px auto;
+}
+
+/* Todos */
+.todos {
+	min-width: 500px;
+	max-width: 1000px;
+	width: 100%;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 75%);
+}
+
+.todos__title {
+	color: #808080;
+}
+
+/* Form */
+.form {
+	display: flex;
+}
+
+.form__input {
+	display: block;
+	width: 100%;
+	height: calc(2.25rem + 2px);
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form__button {
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+	border: 1px solid #17a2b8;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: 0.25rem;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	color: #fff;
+	background-color: #17a2b8;
+	margin-left: 10px;
+}
+
+/* Todos */
+.todos-list {
+	display: flex;
+	flex-direction: column;
+	list-style-type: none;
+	padding: 0;
+}
+
+.todos-list__item {
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	display: flex;
+	padding: 0.75rem 1.25rem;
+	margin-bottom: -1px;
+	background-color: #fff;
+	border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.todos-list__item-button {
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+	border: 1px solid #dc3545;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: 0.25rem;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	color: #dc3545;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+/* Comments */
+.comments {
+	min-width: 500px;
+	max-width: 1000px;
+	width: 100%;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 75%);
+}
+
+.comments__title {
+	color: #808080;
+}
+
+.comments__list {
+	list-style-type: none;
+	padding: 0;
+}
+
+.comments__listitem {
+	display: flex;
+	background-color: #fff;
+	margin-bottom: 10px;
+	align-items: center;
+}
+
+.comments__listitem-color {
+	flex-shrink: 0;
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
+
+.comments__listitem-text {
+	margin: 0;
+}
+
+.comments__form {
+	display: flex;
+}
+
+.comments__form-color {
+	width: 100px;
+	height: 60px;
+	display: block;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.comments__form-field {
+	display: block;
+	width: 100%;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	margin: 0 10px;
+}
+
+.comments__form-button {
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+	border: 1px solid #007bff;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: 0.25rem;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	color: #dc3545;
+	cursor: pointer;
+	color: #fff;
+	background-color: #007bff;
 }
