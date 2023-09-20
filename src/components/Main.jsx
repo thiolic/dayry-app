@@ -1,7 +1,7 @@
 import Todos from './Todos';
 import Comments from './Comments';
 
-function Main() {
+const Main = () => {
 	return (
 		<main className="app-main">
 			<div className="app-main__container">

@@ -1,19 +1,53 @@
-function Todos() {
-	// const 
+import { useEffect, useState } from 'react';
+
+import NewTodoItemForm from './NewTodoItemForm';
+import TodosList from './TodosList';
+
+const initialTodos = [
+	{
+		id: 1,
+		title: 'Test',
+		comments: [],
+	},
+	{
+		id: 2,
+		title: 'Test 2',
+		comments: []
+	}
+];
+
+const Todos = () => {
+	const [todos, setTodos] = useState(() => {
+		const localTodos = localStorage.getItem('todos');
+		const localTodosArray = JSON.parse(localTodos);
+
+		return localTodosArray || initialTodos;
+	});
+
+	useEffect(() => {
+		return localStorage.setItem('todos', JSON.stringify(todos));
+	}, [todos]);
+
+	const handleAddTodoItem = (title) => {
+		setTodos([
+			...todos,
+			{
+				id: Date.now(),
+				title,
+				comments: [],
+			}
+		]);
+	}
+
+	const handleRemoveTodoItem = (id) => {
+		setTodos([...todos].filter(todo => todo.id !== id));
+	}
 
 	return (
 		<div className="todos">
 			<h2 className="todos__title">Items</h2>
-			<form className="todos__form form">
-				<input className="form__input" type="text" placeholder="Type name here..." required />
-				<button className="form__button">Add New</button>
-			</form>
-			<ul className="todos-list">
-				<li className="todos-list__item">
-					Test
-					<button className="todos-list__item-button">Delete</button>
-				</li>
-			</ul>
+			<NewTodoItemForm addTodoItem={handleAddTodoItem} />
+			<TodosList todos={todos} removeTodoItem={handleRemoveTodoItem} />
 		</div>
 	)
 }

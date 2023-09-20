@@ -1,4 +1,4 @@
-function Aside() {
+const Aside = () => {
 	return (
 		<aside className="app-aside">
 			<div className="app-aside__container">

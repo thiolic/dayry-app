@@ -1,4 +1,4 @@
-function Comments() {
+const Comments = () => {
 	return (
 		<div className="comments">
 			<h2 className="comments__title">Comments #00102094</h2>
