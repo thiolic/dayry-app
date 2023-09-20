@@ -2,15 +2,18 @@ import Aside from './components/Aside';
 import Main from './components/Main';
 
 import './App.css';
+import { TodosContextProvider } from './todosContext';
 
 function App() {
 	return (
-		<div className="app">
-			<div className="app-container">
-				<Aside />
-				<Main />
+		<TodosContextProvider>
+			<div className="app">
+				<div className="app-container">
+					<Aside />
+					<Main />
+				</div>
 			</div>
-		</div>
+		</TodosContextProvider>
 	);
 }
 

@@ -1,31 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+
+import { useTodosContext } from '../todosContext';
 
 import NewTodoItemForm from './NewTodoItemForm';
 import TodosList from './TodosList';
 
-const initialTodos = [
-	{
-		id: 1,
-		title: 'Test',
-		comments: [],
-	},
-	{
-		id: 2,
-		title: 'Test 2',
-		comments: []
-	}
-];
-
 const Todos = () => {
-	const [todos, setTodos] = useState(() => {
-		const localTodos = localStorage.getItem('todos');
-		const localTodosArray = JSON.parse(localTodos);
-
-		return localTodosArray || initialTodos;
-	});
-
+	const {todos, setTodos} = useTodosContext();
+	
 	useEffect(() => {
-		return localStorage.setItem('todos', JSON.stringify(todos));
+		const localStorageSetItem = () => {
+			localStorage.setItem('todos', JSON.stringify(todos))
+		}
+
+		window.addEventListener('beforeunload', localStorageSetItem);
+
+		return () => window.removeEventListener('beforeunload', localStorageSetItem);
 	}, [todos]);
 
 	const handleAddTodoItem = (title) => {
@@ -35,6 +25,7 @@ const Todos = () => {
 				id: Date.now(),
 				title,
 				comments: [],
+				isActive: false,
 			}
 		]);
 	}
@@ -43,11 +34,27 @@ const Todos = () => {
 		setTodos([...todos].filter(todo => todo.id !== id));
 	}
 
+	const handleActiveTodoItem = (id) => {
+		const todosCopy = [...todos];
+		const currentTodoItem = todosCopy.map((todo) => {
+		
+			if (todo.id !== id && todo.isActive) {
+				todo.isActive = !todo.isActive;
+			} else if (todo.id === id) {
+				todo.isActive = !todo.isActive;
+			}
+
+			return todo;
+		});
+
+		setTodos(currentTodoItem);
+	}
+
 	return (
 		<div className="todos">
 			<h2 className="todos__title">Items</h2>
 			<NewTodoItemForm addTodoItem={handleAddTodoItem} />
-			<TodosList todos={todos} removeTodoItem={handleRemoveTodoItem} />
+			<TodosList todos={todos} removeTodoItem={handleRemoveTodoItem} activeTodoItem={handleActiveTodoItem} />
 		</div>
 	)
 }
