@@ -1,14 +1,43 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useTodosContext } from '../todosContext';
 
 import TodoItem from './TodoItem';
 
-const TodosList = ({ todos, removeTodoItem, activeTodoItem }) => {
+const TodosList = () => {
+	const { todos, setTodos, activeTodo, setActiveTodo } = useTodosContext();
+
+	useEffect(() => {
+		const localStorageSetItem = () => {
+			localStorage.setItem('todos', JSON.stringify(todos));
+			localStorage.setItem('activeTodo', JSON.stringify(activeTodo));
+		}
+
+		window.addEventListener('beforeunload', localStorageSetItem);
+
+		return () => window.removeEventListener('beforeunload', localStorageSetItem);
+	}, [todos, activeTodo]);
+
+	/* eslint-disable */
+	useEffect(() => {
+		const localTodos = localStorage.getItem('todos');
+		const localActiveTodo = localStorage.getItem('activeTodo');
+
+		if (localTodos) {
+			setTodos(JSON.parse(localTodos));
+		}
+
+		if (localActiveTodo) {
+			setActiveTodo(JSON.parse(localActiveTodo));
+		}
+	}, []);
+	/* eslint-enable */
+
 	return (
 		<>
 			{todos.length === 0 && <p>No Todos</p>}
 			{todos.length > 0 &&
 				<ul className="todos-list">
-					{todos.map(todo => <TodoItem key={todo.id} {...todo} removeTodo={removeTodoItem} activeTodo={activeTodoItem} />)}
+					{todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
 				</ul>
 			}
 		</>

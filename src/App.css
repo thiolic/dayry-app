@@ -96,6 +96,13 @@
 	color: #fff;
 	background-color: #17a2b8;
 	margin-left: 10px;
+	cursor: pointer;
+}
+
+.form__button:hover {
+	color: #fff;
+	background-color: #138496;
+	border-color: #117a8b;
 }
 
 /* Todos */
@@ -131,6 +138,18 @@
 	border-left: 4px solid #ff1493;
 }
 
+.todos-list__item-text {
+	flex-grow: 1;
+}
+
+.todos-list__item-count {
+	color: #fff;
+	background-color: #17a2b8;
+	padding: 0 0.6em;
+	border-radius: 10rem;
+	flex-shrink: 0;
+}
+
 .todos-list__item-button {
 	display: inline-block;
 	font-weight: 400;
@@ -147,6 +166,13 @@
 	color: #dc3545;
 	background-color: transparent;
 	cursor: pointer;
+	margin-left: 20px;
+}
+
+.todos-list__item-button:hover {
+	color: #fff;
+	background-color: #dc3545;
+	border-color: #dc3545;
 }
 
 /* Comments */
@@ -238,4 +264,10 @@
 	cursor: pointer;
 	color: #fff;
 	background-color: #007bff;
+}
+
+.comments__form-button:hover {
+	color: #fff;
+	background-color: #0069d9;
+	border-color: #0062cc;
 }

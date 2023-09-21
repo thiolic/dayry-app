@@ -1,12 +1,18 @@
 import { useState } from 'react';
+import { useTodosContext } from '../todosContext';
 
-const NewTodoItemForm = ({ addTodoItem }) => {
+const NewTodoItemForm = () => {
 	const [title, setTitle] = useState('');
+	const { addTodoItem } = useTodosContext();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		addTodoItem(title);
+		addTodoItem({
+			id: `${Math.floor(Math.random() * 900000000 + 100000000)}`,
+			title,
+			comments: [],
+		});
 
 		setTitle('');
 	}

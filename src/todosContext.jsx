@@ -7,31 +7,63 @@ const initialTodos = [
 		comments: [
 			{
 				id: Date.now(),
-				text: 'I am comment',
-			}
-		],
-		isActive: true,
-	},
-	{
-		id: 2,
-		title: 'Test 2',
-		comments: [],
-		isActive: false,
+				text: 'It is a comment',
+				color: '#67c14b',
+			},
+		]
 	}
 ];
 
 export const TodosContext = createContext([]);
 
 export const TodosContextProvider = ({ children }) => {
-	const [todos, setTodos] = useState(() => {
-		const localTodos = localStorage.getItem('todos');
-		const localTodosArray = JSON.parse(localTodos);
+	const [todos, setTodos] = useState(initialTodos);
+	const [activeTodo, setActiveTodo] = useState(initialTodos[0]);
 
-		return localTodosArray || initialTodos;
-	});
+	const addTodoItem = (todo) => {
+		if (!activeTodo) {
+			setActiveTodo(todo);
+		}
+
+		setTodos([...todos, todo]);
+	}
+
+	const removeTodoItem = (todoId) => {
+		setTodos([...todos].filter(todo => todo.id !== todoId));
+
+		if (activeTodo && activeTodo.id === todoId) {
+			setActiveTodo(todos.find(todo => todo.id !== todoId) || null);
+		}
+	}
+
+	const addComment = (todoId, comment) => {
+		const newTodos = todos.map((todo) => {
+			if (todo.id === todoId) {
+				return {
+					...todo,
+					comments: [...todo.comments, comment],
+				}
+			}
+
+			return todo;
+		})
+
+		setTodos(newTodos);
+		setActiveTodo(newTodos.find(todo => todo.id === activeTodo.id));
+	}
 
 	return (
-		<TodosContext.Provider value={{ todos, setTodos }}>
+		<TodosContext.Provider
+			value={{
+				todos,
+				setTodos,
+				activeTodo,
+				setActiveTodo,
+				addTodoItem,
+				removeTodoItem,
+				addComment,
+			}}
+		>
 			{children}
 		</TodosContext.Provider>
 	);
