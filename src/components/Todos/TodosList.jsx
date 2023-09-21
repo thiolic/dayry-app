@@ -23,11 +23,11 @@ const TodosList = () => {
 		const localTodos = localStorage.getItem('todos');
 		const localActiveTodo = localStorage.getItem('activeTodo');
 
-		if (localTodos) {
+		if (localTodos && JSON.parse(localTodos).length) {
 			setTodos(JSON.parse(localTodos));
 		}
 
-		if (localActiveTodo) {
+		if (localActiveTodo && JSON.parse(localActiveTodo)) {
 			setActiveTodo(JSON.parse(localActiveTodo));
 		}
 	}, []);

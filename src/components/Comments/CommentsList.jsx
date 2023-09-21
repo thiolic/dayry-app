@@ -10,7 +10,7 @@ const CommentsList = () => {
 			{!activeTodo && <p>There are no comments</p>}
 			{activeTodo &&
 				<ul className="comments__list">
-					{activeTodo.comments.map(comment => <CommentsItem {...comment} key={comment.id} />)}
+					{activeTodo.comments?.map(comment => <CommentsItem {...comment} key={comment.id} />)}
 				</ul>
 			}
 		</>
