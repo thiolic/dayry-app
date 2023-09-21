@@ -1,5 +1,5 @@
-import Todos from './Todos';
-import Comments from './Comments';
+import Comments from './Comments/Comments';
+import Todos from './Todos/Todos';
 
 const Main = () => {
 	return (

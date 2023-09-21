@@ -1,5 +1,6 @@
-import { useTodosContext } from '../todosContext';
-import CommentsItem from './CommentsItem'
+import CommentsItem from './CommentsItem';
+
+import { useTodosContext } from '../../todosContext';
 
 const CommentsList = () => {
 	const { activeTodo } = useTodosContext();

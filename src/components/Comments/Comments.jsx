@@ -1,7 +1,7 @@
-import { useTodosContext } from '../todosContext';
-
 import CommentsForm from './CommentsForm';
 import CommentsList from './CommentsList';
+
+import { useTodosContext } from '../../todosContext';
 
 const Comments = () => {
 	const { activeTodo } = useTodosContext();

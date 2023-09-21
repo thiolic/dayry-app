@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { useTodosContext } from '../todosContext';
 
 import TodoItem from './TodoItem';
+
+import { useTodosContext } from '../../todosContext';
 
 const TodosList = () => {
 	const { todos, setTodos, activeTodo, setActiveTodo } = useTodosContext();

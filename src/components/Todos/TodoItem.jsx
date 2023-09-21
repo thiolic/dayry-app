@@ -1,4 +1,4 @@
-import { useTodosContext } from '../todosContext';
+import { useTodosContext } from '../../todosContext';
 
 const TodoItem = ({ todo }) => {
 	const { activeTodo, setActiveTodo, removeTodoItem } = useTodosContext();
